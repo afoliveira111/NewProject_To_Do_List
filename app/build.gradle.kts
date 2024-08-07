@@ -37,6 +37,16 @@ android {
 
 dependencies {
 
+    //Inserido para o projeto
+    implementation (libs.material.v180)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.androidx.room.runtime)
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.navigation.ui.ktx)
+    implementation (libs.kotlinx.coroutines.android)
+
+//Automatico da versão
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
