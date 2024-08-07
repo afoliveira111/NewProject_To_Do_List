@@ -1,5 +1,6 @@
 package com.example.newproject_08_2024
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -18,7 +19,8 @@ interface TaskDao {
     @Delete
     suspend fun delete (task: Task)
 
-    @Query(Select *)
+    @Query("SELECT * FROM task_table ORDER BY id ASC")
+        fun getAllTasks(): LiveData<List<Task>>
 
 
 }
