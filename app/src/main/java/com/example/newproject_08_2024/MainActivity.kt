@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        taskViewModel.allTasks.observe(this, Observer { tasks ->
+        taskViewModel.allTasks.observe(this) { tasks ->
             tasks?.let { adapter.submitList(it) }
-        })
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
