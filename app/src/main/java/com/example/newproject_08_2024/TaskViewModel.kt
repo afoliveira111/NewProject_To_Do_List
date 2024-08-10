@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 
+
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: TaskRepository
@@ -17,8 +18,6 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         repository = TaskRepository(taskDao)
         allTasks = repository.allTasks
     }
-
-
 
     fun insert(task: Task) = viewModelScope.launch {
         repository.insert(task)
