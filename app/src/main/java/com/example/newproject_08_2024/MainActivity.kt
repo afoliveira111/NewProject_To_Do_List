@@ -21,22 +21,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.toolbar)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val buttonAddTask: Button = findViewById(R.id.buttonAddTask)
 
-        adapter = TaskAdapter(
-            onTaskUpdated = { task ->
-                taskViewModel.update(task)
-            },
-            onTaskDeleted = { task ->
-                taskViewModel.delete(task)
-            },
-            onNewTaskEntered = { newTaskName ->
-                val newTask = Task(name = newTaskName)
-                taskViewModel.insert(newTask)
-            }
-        )
+        adapter = TaskAdapter(onTaskUpdated = { task ->
+            taskViewModel.update(task)
+        }, onTaskDeleted = { task ->
+            taskViewModel.delete(task)
+        }, onNewTaskEntered = { newTaskName ->
+            val newTask = Task(name = newTaskName)
+            taskViewModel.insert(newTask)
+        })
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -54,15 +56,6 @@ class MainActivity : AppCompatActivity() {
             val newTask = Task(name = "") // Tarefa inicial vazia
             taskViewModel.insert(newTask) // Insere a nova tarefa no banco de dados
             Log.d("MainActivity", "Task inserted: $newTask")
-        }
-
-
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
         }
     }
 }
