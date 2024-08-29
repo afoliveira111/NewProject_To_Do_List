@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="10"
-        android:hint="Digite aqui sua Tarefa"
+        android:hint="Sua tarefa:"
         android:textSize="12sp"
         android:textColorHint="@color/black"
         android:inputType="text"
