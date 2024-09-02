@@ -40,4 +40,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"/>
 
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deletar"
+        android:textColor="@color/white"
+        android:backgroundTint="#009688"
+        android:padding="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"/>
+
 </LinearLayout>
